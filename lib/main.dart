@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:notes_app/my_theme/my_theme.dart';
 import 'package:notes_app/views/home/home_view.dart';
 
+import 'views/edit_note/edit_note_view.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -18,6 +20,7 @@ class MyApp extends StatelessWidget {
       initialRoute: HomeView.routeName,
       routes: {
         HomeView.routeName : (_) => HomeView(),
+        EditNoteView.routeName : (_) => EditNoteView(),
 
       },
     );

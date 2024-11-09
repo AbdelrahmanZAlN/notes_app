@@ -12,26 +12,28 @@ class AddNoteBottomSheet extends StatelessWidget {
         horizontal: 16,
         vertical: 30
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          CustomTextField(
-              onChange: (text){},
-              label: 'Title',
-          ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * .03,
-          ),
-          CustomTextField(
-              onChange: (text){},
-              label: 'Content',lines: 5,
-          ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * .04,
-          ),
-          CustomElevatedButton(onPressed: (){})
-          
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            CustomTextField(
+                onChange: (text){},
+                label: 'Title',
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * .03,
+            ),
+            CustomTextField(
+                onChange: (text){},
+                label: 'Content',lines: 5,
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * .04,
+            ),
+            CustomElevatedButton(onPressed: (){})
+
+          ],
+        ),
       ),
     );
   }

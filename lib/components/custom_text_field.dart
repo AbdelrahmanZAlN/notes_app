@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
-  String label;
-  String? hint;
-  int lines;
-  Function(String) onChange;
-  TextInputType keyboardType;
-  bool isPassword;
+  final String label;
+  final String? hint;
+  final int lines;
+  final Function(String) onChange;
+  final TextInputType keyboardType;
+  final bool isPassword;
   //TextEditingController controller;
-  CustomTextField({
+  const CustomTextField({
     super.key,
     required this.onChange,
     required this.label,
     //required this.controller,
-
     this.hint,
     this.keyboardType=TextInputType.text,
     this.isPassword=false,

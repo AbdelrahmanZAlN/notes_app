@@ -15,7 +15,6 @@ class HomeView extends StatelessWidget {
               context: context,
               builder: (_)=>const AddNoteBottomSheet(),
             //isScrollControlled: true,
-            scrollControlDisabledMaxHeightRatio: 0.9,
             shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
             ),
