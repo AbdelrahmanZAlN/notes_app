@@ -17,14 +17,14 @@ class AddNoteBottomSheet extends StatelessWidget {
         children: [
           CustomTextField(
               onChange: (text){},
-              label: 'Note Name',
+              label: 'Title',
           ),
           SizedBox(
             height: MediaQuery.of(context).size.height * .03,
           ),
           CustomTextField(
               onChange: (text){},
-              label: 'Note Description',
+              label: 'Content',lines: 5,
           ),
           SizedBox(
             height: MediaQuery.of(context).size.height * .04,

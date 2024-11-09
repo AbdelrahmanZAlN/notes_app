@@ -12,7 +12,7 @@ class CustomElevatedButton extends StatelessWidget {
     return ElevatedButton(
 
       style: ButtonStyle(
-        backgroundColor: WidgetStatePropertyAll(Color(0xFF243B61)),
+        backgroundColor: const WidgetStatePropertyAll(Color(0xFF62FCD7 )),
         padding:const WidgetStatePropertyAll(EdgeInsets.symmetric(vertical: 10)),
         shape:  WidgetStatePropertyAll<RoundedRectangleBorder>(
           RoundedRectangleBorder(
@@ -24,11 +24,11 @@ class CustomElevatedButton extends StatelessWidget {
         onPressed();
       },
       child: Text(
-        'Update',
+        'Add',
         style: Theme.of(context).textTheme.bodyMedium?.
         copyWith(
-        fontWeight:FontWeight.w500,
-        color: Colors.white
+        fontWeight:FontWeight.bold,
+        color: Colors.black87
         ),
       )
     );

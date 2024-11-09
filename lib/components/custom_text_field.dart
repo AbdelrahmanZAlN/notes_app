@@ -24,17 +24,26 @@ class CustomTextField extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return TextField(
+      cursorColor: Theme.of(context).primaryColor,
       onChanged: onChange,
-      minLines: 1,
+      minLines: lines,
       maxLines: lines,
       //controller: controller,
       decoration: InputDecoration(
-        floatingLabelBehavior: FloatingLabelBehavior.always,
+        floatingLabelBehavior: FloatingLabelBehavior.auto,
         labelText: label,
-        labelStyle: Theme.of(context).textTheme.bodyMedium,
+        contentPadding: const EdgeInsets.all(20),
+        labelStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
+          color: Theme.of(context).primaryColor,
+        ),
         hintText: hint,
         hintStyle:Theme.of(context).textTheme.bodyMedium,
-        border: OutlineInputBorder(
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: Theme.of(context).primaryColor,
+            )
+          ),
+          border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(6)
         )
       ),

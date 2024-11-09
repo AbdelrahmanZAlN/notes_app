@@ -13,17 +13,19 @@ class HomeView extends StatelessWidget {
         onPressed: (){
           showModalBottomSheet(
               context: context,
-              builder: (_)=>AddNoteBottomSheet(),
-            shape: RoundedRectangleBorder(
+              builder: (_)=>const AddNoteBottomSheet(),
+            //isScrollControlled: true,
+            scrollControlDisabledMaxHeightRatio: 0.9,
+            shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
             ),
           );
         },
-        child: Icon(Icons.add,size: 30,),
+        child: const Icon(Icons.add,size: 30,),
         backgroundColor: Colors.blue,
-        shape: CircleBorder(),
+        shape: const CircleBorder(),
       ),
-      body: NotesViewBody()
+      body: const NotesViewBody()
     );
   }
 }
