@@ -13,7 +13,8 @@ class AddNoteBottomSheet extends StatelessWidget {
         vertical: 30
       ),
       child: SingleChildScrollView(
-        child: Column(
+        child:
+        Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             CustomTextField(
@@ -30,7 +31,7 @@ class AddNoteBottomSheet extends StatelessWidget {
             SizedBox(
               height: MediaQuery.of(context).size.height * .04,
             ),
-            CustomElevatedButton(onPressed: (){})
+            CustomElevatedButton(onPressed: (){},name: 'Add',)
 
           ],
         ),

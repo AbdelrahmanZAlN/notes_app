@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app/components/custom_app_bar.dart';
+
+import '../../components/custom_elevated_button.dart';
+import '../../components/custom_text_field.dart';
 
 class EditNoteViewBody extends StatelessWidget {
   const EditNoteViewBody({super.key});
@@ -7,8 +9,27 @@ class EditNoteViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        CustomAppBar(),
+        SizedBox(
+          height: MediaQuery.of(context).size.height * .03,
+        ),
+        CustomTextField(
+          onChange: (text){},
+          label: 'Title',
+        ),
+        SizedBox(
+          height: MediaQuery.of(context).size.height * .03,
+        ),
+        CustomTextField(
+          onChange: (text){},
+          label: 'Content',lines: 5,
+        ),
+        SizedBox(
+          height: MediaQuery.of(context).size.height * .04,
+        ),
+        CustomElevatedButton(onPressed: (){}, name: 'Update',)
+
       ],
     );
   }

@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 
 class CustomElevatedButton extends StatelessWidget {
   final Function() onPressed;
+  final String name;
   const CustomElevatedButton({
     super.key,
     required this.onPressed,
+    required this.name,
   });
 
   @override
@@ -24,7 +26,7 @@ class CustomElevatedButton extends StatelessWidget {
         onPressed();
       },
       child: Text(
-        'Add',
+        name,
         style: Theme.of(context).textTheme.bodyMedium?.
         copyWith(
         fontWeight:FontWeight.bold,
