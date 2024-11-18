@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 
-class CustomTextField extends StatelessWidget {
+class CustomTextFormField extends StatelessWidget {
   final String label;
   final String? hint;
   final int lines;
-  final Function(String) onChange;
+  final String? Function(String?)? validator;
+  final void Function(String?)? onSaved;
+  // final Function(String) onSave;
   final TextInputType keyboardType;
   final bool isPassword;
   //TextEditingController controller;
-  const CustomTextField({
+  const CustomTextFormField({
     super.key,
-    required this.onChange,
+    required this.onSaved,
+    required this.validator,
     required this.label,
     //required this.controller,
     this.hint,
@@ -22,9 +25,10 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return TextField(
+    return TextFormField(
       cursorColor: Theme.of(context).primaryColor,
-      onChanged: onChange,
+      validator: validator,
+      onSaved: onSaved,
       minLines: lines,
       maxLines: lines,
       //controller: controller,

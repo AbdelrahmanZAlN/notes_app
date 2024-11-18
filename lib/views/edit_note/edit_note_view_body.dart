@@ -14,15 +14,29 @@ class EditNoteViewBody extends StatelessWidget {
         SizedBox(
           height: MediaQuery.of(context).size.height * .03,
         ),
-        CustomTextField(
-          onChange: (text){},
+        CustomTextFormField(
+          validator: (text){
+            if(text?.trim().isEmpty ?? true){
+              return 'required';
+            }
+            return null;
+          },
+          onSaved: (text){},
           label: 'Title',
         ),
         SizedBox(
           height: MediaQuery.of(context).size.height * .03,
         ),
-        CustomTextField(
-          onChange: (text){},
+        CustomTextFormField(
+          validator: (text){
+            if(text?.trim().isEmpty ?? true){
+              return 'required';
+            }
+            return null;
+          },
+          onSaved: (text){
+
+          },
           label: 'Content',lines: 5,
         ),
         SizedBox(
