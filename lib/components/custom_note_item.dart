@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/cubits/notes_cubit/notes_cubit.dart';
+import 'package:notes_app/dialog_utils.dart';
+import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/views/edit_note/edit_note_view.dart';
 
 class CustomNoteItem extends StatelessWidget {
-  final Color color;
+  final NoteModel noteModel;
   const CustomNoteItem({
     super.key,
-    required this.color
+    required this.noteModel,
   });
 
   @override
@@ -13,7 +17,7 @@ class CustomNoteItem extends StatelessWidget {
     return
       InkWell(
         onTap: (){
-          Navigator.pushNamed(context, EditNoteView.routeName);
+          Navigator.pushNamed(context, EditNoteView.routeName,arguments: noteModel);
         },
         child: Container(
         padding: const EdgeInsets.only(
@@ -24,12 +28,12 @@ class CustomNoteItem extends StatelessWidget {
         width: double.infinity,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
-          color: color
+          color: Color(noteModel.color)
         ),
         child: Column(
           children: [
             ListTile(
-              title: Text('Flutter Tips',
+              title: Text(noteModel.title,
                 style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                     color: Colors.black
                 ),
@@ -37,7 +41,7 @@ class CustomNoteItem extends StatelessWidget {
 
               subtitle: Container(
                 padding: const EdgeInsets.only(top: 8),
-                child: Text('Build your career with Tharwat Samy',
+                child: Text(noteModel.subTitle,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       color: Colors.black45,
                     fontSize: 20
@@ -46,14 +50,18 @@ class CustomNoteItem extends StatelessWidget {
               ),
               isThreeLine: true,
               trailing: IconButton(
-                  onPressed: (){},
+                  onPressed: (){
+                    noteModel.delete();
+                    BlocProvider.of<NotesCubit>(context).fetchAllNotes();
+                    DialogUtils.showToast(context, 'Note deleted successfully');
+                  },
                   icon: const Icon(Icons.delete,size: 32,color: Colors.black,)
               ),
             ),
             Container(
               padding: const EdgeInsets.only(right: 20),
                 alignment: AlignmentDirectional.topEnd,
-              child: Text('may 20 2022',
+              child: Text(noteModel.date,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                 color: Colors.black54,
                 ),

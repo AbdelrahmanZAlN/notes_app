@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
+import 'package:notes_app/cubits/add_note_cubit/add_note_cubit.dart';
+import 'package:notes_app/cubits/add_note_cubit/add_note_state.dart';
+import 'package:notes_app/models/note_model.dart';
+import 'package:notes_app/views/home/colors_list_view.dart';
 import '../../components/custom_elevated_button.dart';
 import '../../components/custom_text_field.dart';
 
@@ -54,16 +59,38 @@ class _AddNoteFormState extends State<AddNoteForm> {
           SizedBox(
             height: MediaQuery.of(context).size.height * .04,
           ),
-          CustomElevatedButton(
-            onPressed: (){
-              if(formKey.currentState!.validate()==true){
-                formKey.currentState!.save();
-              }
-              else {
-                autoValidateMode=AutovalidateMode.always;
-              }
-            },
-            name: 'Add',)
+          const SizedBox(
+            height: 76,
+            child: ColorsListView(),
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * .04,
+          ),
+          BlocBuilder<AddNoteCubit, AddNoteState>(
+            builder: (context, state) {
+              return CustomElevatedButton(
+                isLoading: state is AddNoteLoadingState? true : false,
+                onPressed: (){
+                  if(formKey.currentState!.validate()==true){
+                    formKey.currentState!.save();
+                    var noteModel= NoteModel(
+                        title: title!,
+                        subTitle: subTitle!,
+                        date: DateFormat('yyyy MMM dd').format(DateTime.now()),
+                        color: BlocProvider.of<AddNoteCubit>(context).color!.value
+                    );
+                    BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
+                  }
+                  else {
+                    autoValidateMode=AutovalidateMode.always;
+                    setState(() {
+
+                    });
+                  }
+                },
+                name: 'Add',);
+              },
+)
 
         ],
       ),

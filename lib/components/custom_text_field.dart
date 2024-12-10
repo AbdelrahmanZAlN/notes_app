@@ -6,13 +6,15 @@ class CustomTextFormField extends StatelessWidget {
   final int lines;
   final String? Function(String?)? validator;
   final void Function(String?)? onSaved;
+  final void Function(String?)? onChange;
   // final Function(String) onSave;
   final TextInputType keyboardType;
   final bool isPassword;
   //TextEditingController controller;
   const CustomTextFormField({
     super.key,
-    required this.onSaved,
+    this.onSaved,
+    this.onChange,
     required this.validator,
     required this.label,
     //required this.controller,
@@ -29,6 +31,7 @@ class CustomTextFormField extends StatelessWidget {
       cursorColor: Theme.of(context).primaryColor,
       validator: validator,
       onSaved: onSaved,
+      onChanged: onChange,
       minLines: lines,
       maxLines: lines,
       //controller: controller,
